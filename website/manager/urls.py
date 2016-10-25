@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from .views import register,home, contact, contactList, login, logout
+from .views import register,home, contact, contactList, Login, Logout
 
 app_name = 'manager'
 
@@ -18,7 +18,7 @@ urlpatterns = [
 
     #REGISTRATION
     url(r'^register/$', register.as_view() , name='register'),
-    url(r'^login/$', login.as_view() , name='login'),
-    url(r'^logout/$', logout , name='logout'),
+    url(r'^login/$', Login.as_view() , name='login'),
+    url(r'^logout/$', Logout , name='logout'),
     
     ]

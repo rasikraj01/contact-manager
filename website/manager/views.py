@@ -14,8 +14,6 @@ class home(View):
 
 
 def contact(request):
-	if not request.user.is_staff or not request.user.is_superuser:
-		raise Http404
 	form = ContactForm(request.POST or None)
 	if form.is_valid():
 		instance = form.save(commit=False)
@@ -83,7 +81,7 @@ class register(View):
 
 		return render(request, self.template_name, {'form': form})
 
-def logout(request):
+def Logout(request):
 	if request.user.is_authenticated():
 		logout(request)
 		return redirect('manager:home')
@@ -93,7 +91,7 @@ def logout(request):
 
 
 
-class login(View):
+class Login(View):
 	form = LoginForm
 	template_name = 'login.html'
 
