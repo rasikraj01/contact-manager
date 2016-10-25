@@ -1,3 +1,4 @@
+{% csrf_token %}
 {% for i in query %}
 	<p>{{i.name}} - {{i.number}}</p> 
 {% endfor %}
