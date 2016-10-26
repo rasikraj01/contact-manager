@@ -16,16 +16,21 @@ class home(View):
 
 
 def contact(request):
-	form = ContactForm(request.POST or None)
-	if form.is_valid():
-		instance = form.save(commit=False)
-		instance.save()
-		# message success
-		return redirect('manager:home')
-	context = {
-		"form": form,
-	}
-	return render(request, "contact_form.html", context)
+	if request.user.is_authenticated():
+		form = ContactForm(request.POST or None)
+
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.user = request.user
+			instance.save()
+			#success
+			return redirect('manager:list')
+		context = {
+			"form": form,
+	
+		}
+		return render(request, "contact_form.html", context)
+	return render(request, "not_logged_in.html")
 
 def contactList(request):
 	queryset = Contact.objects.filter(user=request.user)
