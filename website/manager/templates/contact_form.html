@@ -1,5 +1,16 @@
+{% extends "base.html" %}
+{% block title %}
+	Create
+{% endblock title %}
+
+
+{% block content %}	
 <form method='POST' action='' enctype='multipart/form-data'>
 {% csrf_token %}
 {{form.as_p}}
+{% for field in form %}
+	<label for="">field.label</label>
+{% endfor %}
 <button type="submit">SUBMIT</button>
 </form>
+{% endblock content %}

@@ -1,4 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+	List
+{% endblock title %}
+
+{% block content %}
+	CONTACTS:
 {% csrf_token %}
-{% for i in query %}
+{% if query  %}
+	{% for i in query %}
 	<p>{{i.name}} - {{i.number}}</p> 
 {% endfor %}
+{% else %}
+NO CONATCTS YET 
+<br>
+{# MAKE CONTACTS : <a href="{% url 'manager:contact' %} ">CREATE</a>	 #}
+{% endif %}
+
+{% endblock content %}

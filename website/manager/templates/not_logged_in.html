@@ -1,5 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
 YOU ARE NOT LOGGED IN
 
 <br>
 
 <a href="{% url 'manager:login' %} ">Login</a>
+{% endblock content %}
