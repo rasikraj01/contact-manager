@@ -1,8 +1,25 @@
 LOGIN
 
 <br>
-<form action="" method="POST">
-{% csrf_token %}
-{{form.as_p}}
-<button type="submit">SUBMIT</button>
-</form>
+<form role="form" action="{% url 'manager:login'%}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div>
+                            <label for="id_username">
+                                Username:
+                            </label>
+                       
+                                <input id="id_username" maxlength="30" name="username" type="text">
+                           
+                        </div>
+                        <div>
+                            <label  for="id_password">
+                                Password:
+                            </label>
+
+                                <input id="id_password" maxlength="30" name="password" type="password">
+                
+                        </div>
+                        <div class="form-group">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>

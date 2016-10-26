@@ -7,18 +7,15 @@ urlpatterns = [
     url(r'^$', home.as_view(), name='home'),
 
     #CRUD
-
     url(r'^contact/$', contact, name='contact'),
     #url(r'^/detail/$', contact, name='detail'),
     #url(r'^/update/$',, name='update'),
     #url(r'^delete/$', , name='delete'),
-    url(r'^list/$', contactList, name='list'),
-    # url(r'^list/$', contactList.as_view(), name='list'),
-    
+    url(r'^list/$', contactList, name='list'),    
 
     #REGISTRATION
     url(r'^register/$', register.as_view() , name='register'),
-    url(r'^login/$', Login.as_view() , name='login'),
+    url(r'^login/$', Login , name='login'),
     url(r'^logout/$', Logout , name='logout'),
     
     ]
