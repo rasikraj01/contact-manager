@@ -8,7 +8,7 @@
 {% csrf_token %}
 {% if query  %}
 	{% for i in query %}
-	<p>{{i.name}} - {{i.number}}</p> 
+	<p><a href="{% url 'manager:detail' i.pk %} ">{{i.name}}</a></p> 
 {% endfor %}
 {% else %}
 NO CONATCTS YET 

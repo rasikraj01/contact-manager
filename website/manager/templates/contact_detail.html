@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}
+	Detail
+{% endblock title %}
+
+{% block content %}
+	CONTACTS:
+{% csrf_token %}
+DETAILS:<br>
+{% for i in query %}
+	
+{{i.name}} - {{i.number}}
+
+<br><a href="{% url 'manager:delete' i.pk %}">DELETE CONTACT</a> 
+
+<br><a href="{% url 'manager:update' i.pk %}">UPDATE CONTACT</a> 
+
+{% endfor %}
+{% endblock content %}

@@ -1,5 +1,5 @@
 from django.conf.urls import include, url
-from .views import register,home, contact, contactList, Login, Logout
+from .views import register,home, contact, contactList, Login, Logout, detail,update, delete
 
 app_name = 'manager'
 
@@ -8,9 +8,9 @@ urlpatterns = [
 
     #CRUD
     url(r'^contact/$', contact, name='contact'),
-    #url(r'^/detail/$', contact, name='detail'),
-    #url(r'^/update/$',, name='update'),
-    #url(r'^delete/$', , name='delete'),
+    url(r'^(?P<contact_id>[0-9]+)/$', detail, name='detail'),
+    url(r'^(?P<contact_id>[0-9]+)/update/$', update, name='update'),
+    url(r'^(?P<contact_id>[0-9]+)/delete/$', delete, name='delete'),
     url(r'^list/$', contactList, name='list'),    
 
     #REGISTRATION
