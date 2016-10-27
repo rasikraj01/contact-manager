@@ -1,6 +1,11 @@
 {% extends "base.html" %}
+{% block reg %}
+	
+				<li><a href="{% url 'manager:login' %}">LOGIN</a> </li>
+				<li><a href="{% url 'manager:register' %}">REGISTER</a> </li>
+{% endblock reg %}
 {% block content %}
 	
 {% csrf_token %}
-HI  {{user}}
+HI {{user}}
 {% endblock content %}

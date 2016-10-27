@@ -1,8 +1,6 @@
 from django.shortcuts import get_object_or_404 ,render , redirect
-
 from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View, ListView, DetailView
-
 from .forms import UserForm, LoginForm, ContactForm
 from .models import Contact
 

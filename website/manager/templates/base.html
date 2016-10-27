@@ -6,10 +6,11 @@
 		<nav>
 			<ul>
 				<li><a href="{% url 'manager:contact' %} "> CREATE CONTACT</a></li>
-				<li><a href="{% url 'manager:login' %}">LOGIN</a> </li>
-				<li><a href="{% url 'manager:register' %}">REGISTER</a> </li>
 				<li><a href="{% url 'manager:list' %}">MY CONTACTS</a> </li>
 				<li><a href="{% url 'manager:logout' %}">LOGOUT</a> </li>
+				{% block reg %}
+					
+				{% endblock reg %}
 			</ul>
 		</nav>
 		<br>
