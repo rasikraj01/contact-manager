@@ -1,16 +1,27 @@
 <html>
 	<head>
+	<!--
+	<script
+		src="https://code.jquery.com/jquery-2.2.4.min.js"
+		  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+
+	-->
 		<title>Contact Manager | {% block title %}HOME{% endblock title %}</title>
 	</head>
 	<body>
-		<nav>
+		<nav >
 			<ul>
+			{% if request.user.is_authenticated %}
+					<li><a href="{% url 'manager:logout' %}">LOGOUT</a> </li>	
+			{% else %}
+				<li><a href="{% url 'manager:login' %}">LOGIN</a> </li>
+				<li><a href="{% url 'manager:register' %}">REGISTER</a> </li>
+			{% endif %}
 				<li><a href="{% url 'manager:contact' %} "> CREATE CONTACT</a></li>
 				<li><a href="{% url 'manager:list' %}">MY CONTACTS</a> </li>
-				<li><a href="{% url 'manager:logout' %}">LOGOUT</a> </li>
-				{% block reg %}
-					
-				{% endblock reg %}
 			</ul>
 		</nav>
 		<br>

@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import View, ListView, DetailView
 from .forms import UserForm, LoginForm, ContactForm
 from .models import Contact
-
+from django.db.models import Q
 
 # Create your views here.
 class home(View):
@@ -32,13 +32,20 @@ def contact(request):
 def contactList(request):
 	if request.user.is_authenticated():
 		queryset = Contact.objects.filter(user=request.user)
+		query = request.GET.get("q")
+		if query:
+			queryset = Contact.objects.filter(user=request.user).filter(
+				Q(name__icontains=query) |
+				Q(number__icontains=query) 
+				)
 		return render(request, 'contact_list.html', {"query": queryset})
+
 	else:
 		return render(request, 'not_logged_in.html')
 
 def detail(request, contact_id):
 	if request.user.is_authenticated():
-		queryset = Contact.objects.filter(pk = contact_id)
+		queryset = Contact.objects.filter(pk = contact_id).filter(user=request.user)
 		return render(request, 'contact_detail.html', {"query":queryset})
 	else:
 		return render(request, 'not_logged_in.html')

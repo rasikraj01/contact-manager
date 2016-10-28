@@ -6,6 +6,9 @@
 {% block content %}
 	CONTACTS:
 {% csrf_token %}
+<form method="GET" role="search" action='{% url "manager:list" %}'>
+	 <input type="text" placeholder="Search(name or number)" name="q">
+</form>
 {% if query  %}
 	{% for i in query %}
 	<p><a href="{% url 'manager:detail' i.pk %} ">{{i.name}}</a></p> 

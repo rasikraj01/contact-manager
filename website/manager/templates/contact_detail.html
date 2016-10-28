@@ -7,6 +7,8 @@
 	CONTACTS:
 {% csrf_token %}
 DETAILS:<br>
+{% if query %}
+		
 {% for i in query %}
 	
 {{i.name}} - {{i.number}}
@@ -16,4 +18,7 @@ DETAILS:<br>
 <br><a href="{% url 'manager:update' i.pk %}">UPDATE CONTACT</a> 
 
 {% endfor %}
+{% else %}
+	NO DETAIL
+{% endif %}
 {% endblock content %}
